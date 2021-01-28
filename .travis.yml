@@ -1,0 +1,14 @@
+sudo: false
+
+cache:
+  directories:
+    - node_modules
+
+language: node_js
+
+node_js:
+  - 'lts/*'
+
+script:
+  - npm run lint
+  - npm run test
