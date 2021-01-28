@@ -10,7 +10,8 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --passWithNoTests"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --passWithNoTests",
+    "test:coveralls": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --passWithNoTests && coveralls < coverage/lcov.info"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
