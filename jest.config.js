@@ -6,7 +6,7 @@ export default {
   transform: {},
 
   collectCoverageFrom: [
-    'src/**/*.{js,jsx,ts,tsx}',
+    './src/domain/**/*.{js,jsx,ts,tsx}',
   ],
 
   coverageThreshold: {
