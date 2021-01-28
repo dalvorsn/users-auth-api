@@ -9,7 +9,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: "${MONGO_DB_USER}"
       MONGO_INITDB_ROOT_PASSWORD: "${MONGO_DB_PASSWORD}"
     volumes:
-      - mysql-db-data:/data/db
-      
+      - mongo-db-data:/data/db
+
 volumes:
   mongo-db-data:
