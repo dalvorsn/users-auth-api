@@ -1,7 +1,7 @@
 import { StatusCodes } from '../constants.js';
-import { signInUseCase, toDTO } from '../domain/use-cases/index.js';
+import { signInUseCase } from '../domain/use-cases/index.js';
 
-const makeSignIn = () => async (httpRequest) => {
+const makeSignIn = ({ toDTO }) => async (httpRequest) => {
   const { body: { email, password } } = httpRequest;
   const data = await signInUseCase({ email, password });
 

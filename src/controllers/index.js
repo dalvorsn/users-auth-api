@@ -18,9 +18,9 @@ const toDTO = ({
 });
 
 const authController = makeAuth({ tokenHandler });
-const signInController = makeSignIn();
-const signUpController = makeSignUp();
-const findUserController = makeFindUser();
+const signInController = makeSignIn({ toDTO });
+const signUpController = makeSignUp({ toDTO });
+const findUserController = makeFindUser({ toDTO });
 
 const controllers = Object.freeze({
   authController, signInController, signUpController, findUserController, toDTO,

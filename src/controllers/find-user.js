@@ -1,7 +1,7 @@
 import { StatusCodes } from '../constants.js';
-import { findUserUseCase, toDTO } from '../domain/use-cases/index.js';
+import { findUserUseCase } from '../domain/use-cases/index.js';
 
-const makeFindUser = () => async (httpRequest) => {
+const makeFindUser = ({ toDTO }) => async (httpRequest) => {
   const { params: { id } } = httpRequest;
   const { headers: { authorization } } = httpRequest;
   const token = authorization.replace(/^Bearer\s+/, '');
