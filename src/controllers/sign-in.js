@@ -1,16 +1,26 @@
 import { StatusCodes } from '../constants.js';
+import { signInUseCase } from '../domain/use-cases/index.js';
 
-// mock use case
-const signInUseCase = async () => {};
+const toDTO = ({
+  id, name, email, phones, token, lastLogin, createdAt, updatedAt,
+}) => ({
+  id,
+  name,
+  email,
+  phones,
+  token,
+  createdAt: new Date(createdAt).toISOString(),
+  updatedAt: new Date(updatedAt).toISOString(),
+  lastLogin: new Date(lastLogin).toISOString(),
+});
 
-const makeSignIn = ({ hasher }) => async (httpRequest) => {
+const makeSignIn = () => async (httpRequest) => {
   const { body: { email, password } } = httpRequest;
-  const hash = await hasher.encrypt(password);
-  const data = await signInUseCase({ email, password: hash });
+  const data = await signInUseCase({ email, password });
 
   const response = {
     statusCode: StatusCodes.OK,
-    data,
+    data: toDTO(data),
   };
 
   return response;
