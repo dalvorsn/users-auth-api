@@ -1,6 +1,6 @@
 import { StatusCodes } from '../constants.js';
 import {
-  BadRequestError, UnauthorizedError, InternalServerError, ResourceNotFoundError,
+  BadRequestError, UnauthorizedError, InternalServerError, ResourceNotFoundError, ConflictError,
 } from '../helpers/error-types.js';
 
 const errorCodes = [
@@ -8,6 +8,7 @@ const errorCodes = [
   { statusCode: StatusCodes.UNAUTHORIZED, class: UnauthorizedError },
   { statusCode: StatusCodes.NOT_FOUND, class: ResourceNotFoundError },
   { statusCode: StatusCodes.INTERNAL_SERVER_ERROR, class: InternalServerError },
+  { statusCode: StatusCodes.CONFLICT, class: ConflictError },
 ];
 
 const errorHandler = (error) => {

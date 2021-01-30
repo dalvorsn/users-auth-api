@@ -1,3 +1,5 @@
+import { DomainError } from '../../helpers/error-types.js';
+
 const buildMakeUser = ({ guid, emailValidator, phoneValidator }) => {
   const makeUser = ({
     id = guid.genId(),
@@ -11,23 +13,23 @@ const buildMakeUser = ({ guid, emailValidator, phoneValidator }) => {
     lastLogin,
   }) => {
     if (!guid.isValid(id)) {
-      throw Error('Invalid id.');
+      throw new DomainError('Invalid id.');
     }
 
     if (!name || name.length < 3 || name.length > 255) {
-      throw Error('Invalid or missing name.');
+      throw new DomainError('Invalid or missing name.');
     }
 
     if (!email || !emailValidator.isValid(email)) {
-      throw Error('Invalid email.');
+      throw new DomainError('Invalid email.');
     }
 
     if (!password || password.length < 6) {
-      throw Error('Missing password or invalid');
+      throw new DomainError('Missing password or invalid.');
     }
 
     if (phones && Array.isArray(phones) && !phones.every(phoneValidator.isValid)) {
-      throw Error('Invalid phones.');
+      throw new DomainError('Invalid phones.');
     }
 
     return Object.seal({
