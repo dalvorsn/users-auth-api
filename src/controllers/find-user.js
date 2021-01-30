@@ -1,28 +1,16 @@
 import { StatusCodes } from '../constants.js';
-import { ResourceNotFoundError, UnauthorizedError } from '../helpers/error-types.js';
-// mock use case
-const findUserUseCase = async () => {};
+import { findUserUseCase } from '../domain/use-cases/index.js';
 
 const makeFindUser = () => async (httpRequest) => {
   const { params: { id } } = httpRequest;
-  const user = await findUserUseCase({ id });
-
-  if (!user) {
-    throw new ResourceNotFoundError();
-  }
-
   const { headers: { authorization } } = httpRequest;
-  const { token } = user;
-  const requestToken = authorization.replace(/^Bearer\s+/, '');
-  if (token !== requestToken) {
-    throw UnauthorizedError();
-  }
+  const token = authorization.replace(/^Bearer\s+/, '');
 
-  delete user.password;
+  const user = await findUserUseCase({ id, token });
 
   const response = {
     statusCode: StatusCodes.OK,
-    user,
+    data: { ...user },
   };
 
   return response;
