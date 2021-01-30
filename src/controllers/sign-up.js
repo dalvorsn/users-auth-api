@@ -1,20 +1,7 @@
-import { signUpUseCase } from '../domain/use-cases/index.js';
 import { StatusCodes } from '../constants.js';
+import { signUpUseCase } from '../domain/use-cases/index.js';
 
-const toDTO = ({
-  id, name, email, phones, token, lastLogin, createdAt, updatedAt,
-}) => ({
-  id,
-  name,
-  email,
-  phones,
-  token,
-  createdAt: new Date(createdAt).toISOString(),
-  updatedAt: new Date(updatedAt).toISOString(),
-  lastLogin: new Date(lastLogin).toISOString(),
-});
-
-const makeSignUp = () => async (httpRequest) => {
+const makeSignUp = ({ toDTO }) => async (httpRequest) => {
   const {
     body: {
       name, email, password, phones,

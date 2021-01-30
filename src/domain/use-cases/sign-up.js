@@ -19,7 +19,7 @@ const makeSignUpUseCase = ({ tokenHandler, hasher, usersDb }) => async ({
 
   user.lastLogin = new Date();
   user.token = tokenHandler.encode({ id: user.id, email });
-  user.password = hasher.encrypt(password);
+  user.password = await hasher.encrypt(password);
 
   const insertUser = await usersDb.insert(user);
   return insertUser;
