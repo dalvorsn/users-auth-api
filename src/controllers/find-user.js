@@ -1,5 +1,5 @@
 import { StatusCodes } from '../constants.js';
-import { findUserUseCase } from '../domain/use-cases/index.js';
+import { findUserUseCase, toDTO } from '../domain/use-cases/index.js';
 
 const makeFindUser = () => async (httpRequest) => {
   const { params: { id } } = httpRequest;
@@ -10,7 +10,7 @@ const makeFindUser = () => async (httpRequest) => {
 
   const response = {
     statusCode: StatusCodes.OK,
-    data: { ...user },
+    data: toDTO(user),
   };
 
   return response;

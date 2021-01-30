@@ -11,11 +11,11 @@ const isValid = (token) => verify(token, secret);
 const decode = (token) => jwtDecode(token);
 const encode = (data) => sign(data, secret, { expiresIn: expireTime });
 
-const tokenHandler = {
+const tokenHandler = Object.freeze({
   isTokenExpiredError,
   isValid,
   decode,
   encode,
-};
+});
 
-export default Object.freeze(tokenHandler);
+export default tokenHandler;

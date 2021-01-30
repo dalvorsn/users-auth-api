@@ -35,16 +35,15 @@ class ConflictError extends Error {
   }
 }
 
-const errors = {
+const errors = Object.freeze({
   BadRequestError,
   UnauthorizedError,
   InternalServerError,
   ResourceNotFoundError,
   ConflictError,
   DomainError,
-};
+});
 
-export default Object.freeze(errors);
 export {
   BadRequestError,
   UnauthorizedError,
@@ -53,3 +52,5 @@ export {
   ConflictError,
   DomainError,
 };
+
+export default errors;
