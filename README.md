@@ -5,7 +5,7 @@
 ## Instalação
 
 Instalar dependências através do comando npm install.
-Configurar variáveis de ambiente, de acordo com o formato de .env.sample.
+Configurar variáveis de ambiente, de acordo com o formato de .env.example.
 
 Para configuração do travis CI e coveralls é necessário possuir conta em ambos, e configurar as seguintes variáveis de ambiente no build do travis:
 
