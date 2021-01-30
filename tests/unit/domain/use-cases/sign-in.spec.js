@@ -29,7 +29,8 @@ describe('Use Case sign in', () => {
 
       const { email, password } = validUser;
       const signInUseCase = makeSignInUseCase({ tokenHandler, hasher, usersDb });
-      await expect(signInUseCase({ email, password })).resolves.toBe(user);
+      const promise = signInUseCase({ email, password });
+      await expect(promise).resolves.toBe(user);
       done();
     });
   });
@@ -40,8 +41,9 @@ describe('Use Case sign in', () => {
         getByEmail: async () => null,
       };
 
-      const SignInUseCase = makeSignInUseCase({ tokenHandler, hasher, usersDb });
-      await expect(SignInUseCase(validUser)).rejects.toThrow(UnauthorizedError);
+      const signInUseCase = makeSignInUseCase({ tokenHandler, hasher, usersDb });
+      const promise = signInUseCase(validUser);
+      await expect(promise).rejects.toThrow(UnauthorizedError);
       done();
     });
 
@@ -52,9 +54,9 @@ describe('Use Case sign in', () => {
 
       const password = 'randomPassword';
       const { email } = validUser;
-      const SignInUseCase = makeSignInUseCase({ tokenHandler, hasher, usersDb });
-
-      await expect(SignInUseCase({ email, password })).rejects.toThrow(UnauthorizedError);
+      const signInUseCase = makeSignInUseCase({ tokenHandler, hasher, usersDb });
+      const promise = signInUseCase({ email, password });
+      await expect(promise).rejects.toThrow(UnauthorizedError);
       done();
     });
   });

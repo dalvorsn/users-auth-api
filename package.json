@@ -12,7 +12,7 @@
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "lint": "eslint .",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --passWithNoTests",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --verbose --passWithNoTests",
     "test:coveralls": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --passWithNoTests && coveralls < coverage/lcov.info"
   },
   "dependencies": {
