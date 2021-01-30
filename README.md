@@ -33,5 +33,5 @@ npm run dev
 
 ## Consumo do serviço
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/184b8b9a887e45106068)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/14051062/TW6xp8ze)
 
