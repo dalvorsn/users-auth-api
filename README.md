@@ -4,16 +4,16 @@
 
 ## Instalação
 
-Instalar dependencias através do comando npm install.
-Configurar variaveis de ambiente, de acordo com o formato de .env.sample.
+Instalar dependências através do comando npm install.
+Configurar variáveis de ambiente, de acordo com o formato de .env.sample.
 
-Para configuração do travis CI e coveralls é necessário possui conta em ambos, e configurar as seguintes variaveis de ambiente no build do travis:
+Para configuração do travis CI e coveralls é necessário possuir conta em ambos, e configurar as seguintes variáveis de ambiente no build do travis:
 
 - COVERALLS_REPO_TOKEN (gerado em coveralls.io)
 - COVERALLS_SERVICE_NAME ('travis' para repositorios públicos e 'travis-pro' para privados)
 - JWT_SECRET_KEY
 
-Opcionalmente a instancia do mongoDB pode ser feita localmente através do docker-compose (https://docs.docker.com/compose/install/):
+Opcionalmente a instância do mongoDB pode ser feita localmente através do docker-compose (https://docs.docker.com/compose/install/):
 
 ```
 docker-compose up -d mongodb
