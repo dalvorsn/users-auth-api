@@ -1,7 +1,18 @@
+import { signUpUseCase } from '../domain/use-cases/index.js';
 import { StatusCodes } from '../constants.js';
 
-// mock use case
-const signUpUseCase = async () => {};
+const toDTO = ({
+  id, name, email, phones, token, lastLogin, createdAt, updatedAt,
+}) => ({
+  id,
+  name,
+  email,
+  phones,
+  token,
+  createdAt: new Date(createdAt).toISOString(),
+  updatedAt: new Date(updatedAt).toISOString(),
+  lastLogin: new Date(lastLogin).toISOString(),
+});
 
 const makeSignUp = () => async (httpRequest) => {
   const {
@@ -16,7 +27,7 @@ const makeSignUp = () => async (httpRequest) => {
 
   const response = {
     statusCode: StatusCodes.CREATED,
-    data,
+    data: toDTO(data),
   };
 
   return response;

@@ -11,6 +11,12 @@ class BadRequestError extends Error {
   }
 }
 
+class DomainError extends Error {
+  constructor(message = 'Domain error.') {
+    super(message);
+  }
+}
+
 class UnauthorizedError extends Error {
   constructor(message = 'Unauthorized.') {
     super(message);
@@ -23,11 +29,27 @@ class ResourceNotFoundError extends Error {
   }
 }
 
+class ConflictError extends Error {
+  constructor(message = 'Conflict error.') {
+    super(message);
+  }
+}
+
 const errors = {
-  BadRequestError, UnauthorizedError, InternalServerError, ResourceNotFoundError,
+  BadRequestError,
+  UnauthorizedError,
+  InternalServerError,
+  ResourceNotFoundError,
+  ConflictError,
+  DomainError,
 };
 
 export default Object.freeze(errors);
 export {
-  BadRequestError, UnauthorizedError, InternalServerError, ResourceNotFoundError,
+  BadRequestError,
+  UnauthorizedError,
+  InternalServerError,
+  ResourceNotFoundError,
+  ConflictError,
+  DomainError,
 };
